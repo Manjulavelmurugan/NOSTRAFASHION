@@ -1,0 +1,33 @@
+{% extends 'Ovis_Fashion/layouts/main.html' %}
+{% block title %}
+Ovis_Fashion
+{% endblock title %}
+
+{% block content%}
+{% include 'Ovis_Fashion/inc/slider.html' %}
+<div class="container" style="margin-top: 70px;">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-3">latest Offers</h3>
+            <hr style="border-color:#b8bfc2">
+            {% for item in products %}   
+             <div class="col-md-4 col-lg-3">
+                <div class="card my-3">
+                    <img src="{{ item.product_image.url }}" class="card-image-top" alt={{products}}>
+                    <a href="{% url 'product_detials' cname='item.category.name{{products}}' pname='item.name' %}">
+
+                  <div class="card-body">
+                    <h5 class="card-title text-primary">{{ item.name }}</h5>
+                    <p class="card-text">
+                       <span class="float-start old_price"><s>Rs.{{ item.original_price }}</s></span>
+                       <span class="float-end new_price">RS.{{ item.selling_price }}</span>
+                    </p>
+                  </div>
+                  </a>
+                </div>
+             </div>  
+             {%  endfor %} 
+        </div>
+ </div>   
+</div>
+{% endblock content %}
